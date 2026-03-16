@@ -10,6 +10,8 @@ public class MainGame : Game
     public static SpriteBatch Batch {get;private set;}
     public static Vector2 ScreenSize {get;private set;}
     private static bool _running = true;
+    private RenderTarget2D _renderTarget2D;
+
 
     public MainGame()
     {
@@ -32,6 +34,9 @@ public class MainGame : Game
     protected override void LoadContent()
     {
         Batch = new SpriteBatch(GraphicsDevice);
+
+        // setting resolution
+        _renderTarget2D = new(GraphicsDevice, 1600, 900);
     }
 
     protected override void Update(GameTime gameTime)
@@ -49,8 +54,16 @@ public class MainGame : Game
 
     protected override void Draw(GameTime gameTime)
     {
-        GraphicsDevice.Clear(Color.CornflowerBlue);
+        GraphicsDevice.Clear(Color.Black);
+        GraphicsDevice.SetRenderTarget(_renderTarget2D);
 
+        // drawing logic here
+
+
+        GraphicsDevice.SetRenderTarget(null);
+        Batch.Begin();
+        Batch.Draw(_renderTarget2D, new Rectangle(0, 0, (int)ScreenSize.X, (int)ScreenSize.Y), Color.White);
+        Batch.End();
         base.Draw(gameTime);
     }
     public static void Shutdown()
