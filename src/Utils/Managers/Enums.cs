@@ -13,4 +13,13 @@ public sealed partial class Content
         MEDIUM,
         HUGE,
     }
+    public enum TextureName
+    {
+        
+    }
+
+    public enum SoundName
+    {
+        
+    }
 }

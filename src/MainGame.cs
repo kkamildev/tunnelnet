@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Tunnelnet.Scenes;
 using Tunnelnet.Utils.Managers;
 
 namespace Tunnelnet;
@@ -11,9 +12,10 @@ public class MainGame : Game
     public static SpriteBatch Batch {get;private set;}
     public static Vector2 ScreenSize {get;private set;}
     public Content CM {get;private set;}
-    private static bool _running = true;
+    public float DeltaTime {get;private set;}
+    private bool _running = true;
     private RenderTarget2D _renderTarget2D;
-
+    private Scene _currentScene;
 
     public MainGame()
     {
@@ -38,13 +40,18 @@ public class MainGame : Game
         Batch = new SpriteBatch(GraphicsDevice);
         CM = new Content(Content);
 
+        _currentScene = new MainScene(this);
+        // loading content
         CM.LoadFonts();
+        CM.LoadTextures();
+        CM.LoadSoundEffects();
         // setting resolution
         _renderTarget2D = new(GraphicsDevice, 1600, 900);
     }
 
     protected override void Update(GameTime gameTime)
     {
+        DeltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
         if(!_running)
         {
             Exit();
@@ -53,6 +60,7 @@ public class MainGame : Game
         {
             Shutdown();
         }
+        _currentScene.Update();
         base.Update(gameTime);
     }
 
@@ -62,22 +70,20 @@ public class MainGame : Game
         GraphicsDevice.SetRenderTarget(_renderTarget2D);
 
         // drawing logic here
-        Batch.Begin();
-        Batch.DrawString(CM.GetFont(Utils.Managers.Content.FontName.SMALL), "Hello world", new Vector2(100, 100), Color.White);
-        Batch.DrawString(CM.GetFont(Utils.Managers.Content.FontName.MEDIUM), "Hello world", new Vector2(100, 150), Color.White);
-        Batch.DrawString(CM.GetFont(Utils.Managers.Content.FontName.BASE), "Hello world", new Vector2(100, 200), Color.White);
-        Batch.DrawString(CM.GetFont(Utils.Managers.Content.FontName.BIG), "Hello world", new Vector2(100, 300), Color.White);
-        Batch.DrawString(CM.GetFont(Utils.Managers.Content.FontName.BIGGER), "Hello world", new Vector2(100, 450), Color.White);
-        Batch.DrawString(CM.GetFont(Utils.Managers.Content.FontName.HUGE), "Hello world", new Vector2(100, 600), Color.White);
-        Batch.End();
+        _currentScene.Draw();
+
         GraphicsDevice.SetRenderTarget(null);
         Batch.Begin();
         Batch.Draw(_renderTarget2D, new Rectangle(0, 0, (int)ScreenSize.X, (int)ScreenSize.Y), Color.White);
         Batch.End();
         base.Draw(gameTime);
     }
-    public static void Shutdown()
+    public void Shutdown()
     {
         _running = false;
+    }
+    public void SetScene(Scene scene)
+    {
+        _currentScene = scene;
     }
 }

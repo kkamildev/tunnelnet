@@ -1,6 +1,7 @@
 
 
 using System.Collections.Generic;
+using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -11,6 +12,8 @@ public sealed partial class Content
     private readonly string _fontsPath;
     private ContentManager _contentManager;
     private Dictionary<FontName, SpriteFont> _fonts;
+    private Dictionary<TextureName, Texture2D> _textures;
+    private Dictionary<SoundName, SoundEffect> _soundEffects;
     public Content(ContentManager contentManager)
     {
         _contentManager = contentManager;
@@ -30,10 +33,35 @@ public sealed partial class Content
         };
     }
 
+    public void LoadTextures()
+    {
+        _textures = new()
+        {
+            
+        };
+    }
+    
+    public void LoadSoundEffects()
+    {
+        _soundEffects = new()
+        {
+            
+        };
+    }
+
     public SpriteFont GetFont(FontName fontName)
     {
         return _fonts[fontName];
     }
 
+    public Texture2D GetTexture(TextureName textureName)
+    {
+        return _textures[textureName];
+    }
+    
+    public SoundEffect GetSound(SoundName soundName)
+    {
+        return _soundEffects[soundName];
+    }
 
 }
