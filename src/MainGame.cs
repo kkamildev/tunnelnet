@@ -63,7 +63,12 @@ public class MainGame : Game
 
         // drawing logic here
         Batch.Begin();
-        Batch.DrawString(CM.GetFont(Utils.Managers.Content.FontName.BASE), "Hello world", new Vector2(100, 100), Color.White);
+        Batch.DrawString(CM.GetFont(Utils.Managers.Content.FontName.SMALL), "Hello world", new Vector2(100, 100), Color.White);
+        Batch.DrawString(CM.GetFont(Utils.Managers.Content.FontName.MEDIUM), "Hello world", new Vector2(100, 150), Color.White);
+        Batch.DrawString(CM.GetFont(Utils.Managers.Content.FontName.BASE), "Hello world", new Vector2(100, 200), Color.White);
+        Batch.DrawString(CM.GetFont(Utils.Managers.Content.FontName.BIG), "Hello world", new Vector2(100, 300), Color.White);
+        Batch.DrawString(CM.GetFont(Utils.Managers.Content.FontName.BIGGER), "Hello world", new Vector2(100, 450), Color.White);
+        Batch.DrawString(CM.GetFont(Utils.Managers.Content.FontName.HUGE), "Hello world", new Vector2(100, 600), Color.White);
         Batch.End();
         GraphicsDevice.SetRenderTarget(null);
         Batch.Begin();

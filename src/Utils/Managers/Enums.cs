@@ -6,6 +6,11 @@ public sealed partial class Content
 {
     public enum FontName
     {
-        BASE
+        BASE,
+        SMALL,
+        BIG,
+        BIGGER,
+        MEDIUM,
+        HUGE,
     }
 }

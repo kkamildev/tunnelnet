@@ -21,7 +21,12 @@ public sealed partial class Content
     {
         _fonts = new()
         {
-            { FontName.BASE, _contentManager.Load<SpriteFont>(_fontsPath + "base") }
+            { FontName.BASE, _contentManager.Load<SpriteFont>(_fontsPath + "base") },
+            { FontName.SMALL, _contentManager.Load<SpriteFont>(_fontsPath + "small") },
+            { FontName.BIG, _contentManager.Load<SpriteFont>(_fontsPath + "big") },
+            { FontName.BIGGER, _contentManager.Load<SpriteFont>(_fontsPath + "bigger") },
+            { FontName.MEDIUM, _contentManager.Load<SpriteFont>(_fontsPath + "medium") },
+            { FontName.HUGE, _contentManager.Load<SpriteFont>(_fontsPath + "huge") }
         };
     }
 
