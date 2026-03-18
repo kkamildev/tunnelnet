@@ -11,7 +11,8 @@ public class MainGame : Game
     public static GraphicsDeviceManager Graph {get; private set;}
     public static SpriteBatch Batch {get;private set;}
     public static Vector2 ScreenSize {get;private set;}
-    public Content CM {get;private set;}
+    public static Vector2 Resolution {get;private set;}
+    public static Content CM {get;private set;}
     public float DeltaTime {get;private set;}
     private bool _running = true;
     private RenderTarget2D _renderTarget2D;
@@ -40,13 +41,15 @@ public class MainGame : Game
         Batch = new SpriteBatch(GraphicsDevice);
         CM = new Content(Content);
 
-        _currentScene = new MainScene(this);
         // loading content
         CM.LoadFonts();
         CM.LoadTextures();
         CM.LoadSoundEffects();
         // setting resolution
-        _renderTarget2D = new(GraphicsDevice, 1600, 900);
+        Resolution = new Vector2(1600, 900);
+        _renderTarget2D = new(GraphicsDevice, (int)Resolution.X, (int)Resolution.Y);
+
+        _currentScene = new MainScene(this);
     }
 
     protected override void Update(GameTime gameTime)

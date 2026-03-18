@@ -1,6 +1,6 @@
 
-
 namespace Tunnelnet.Scenes;
+
 
 public abstract class Scene
 {
@@ -12,7 +12,6 @@ public abstract class Scene
 
     public virtual void Draw()
     {
-        
     }
     public virtual void Update()
     {
