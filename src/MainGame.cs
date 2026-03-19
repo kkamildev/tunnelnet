@@ -13,6 +13,7 @@ public class MainGame : Game
     public static Vector2 ScreenSize {get;private set;}
     public static Vector2 Resolution {get;private set;}
     public static Content CM {get;private set;}
+    public static Input Input {get;private set;}
     public float DeltaTime {get;private set;}
     private bool _running = true;
     private RenderTarget2D _renderTarget2D;
@@ -40,6 +41,7 @@ public class MainGame : Game
     {
         Batch = new SpriteBatch(GraphicsDevice);
         CM = new Content(Content);
+        Input = new();
 
         // loading content
         CM.LoadFonts();
@@ -55,6 +57,7 @@ public class MainGame : Game
     protected override void Update(GameTime gameTime)
     {
         DeltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
+        Input.SetCurrentState();
         if(!_running)
         {
             Exit();
@@ -64,6 +67,7 @@ public class MainGame : Game
             Shutdown();
         }
         _currentScene.Update();
+        Input.SetPrevirousState();
         base.Update(gameTime);
     }
 

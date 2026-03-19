@@ -26,6 +26,7 @@ public sealed class MainScene : Scene
 
     public override void Update()
     {
+        _player.Update();
         base.Update();
     }
 }

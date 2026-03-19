@@ -4,12 +4,9 @@ namespace Tunnelnet.Utils.Components;
 using Microsoft.Xna.Framework;
 using Tunnelnet.Utils.Managers;
 using Microsoft.Xna.Framework.Graphics;
-using System;
 
 public class Sprite
 {
-    private const int SPRITE_WIDTH = 32;
-    private const int SPRITE_HEIGHT = 32;
     private Content.TextureName _texture;
     private Rectangle _rectangle;
     private float _xAlign, _yAlign;
@@ -41,12 +38,12 @@ public class Sprite
 
     public void Draw()
     {
-        MainGame.Batch.Draw(MainGame.CM.GetTexture(_texture), _rectangle, null, Color, _rotation, new Vector2(SPRITE_WIDTH * _xAlign, SPRITE_HEIGHT * _yAlign), SpriteEffects.None, 0f);
+        MainGame.Batch.Draw(MainGame.CM.GetTexture(_texture), _rectangle, null, Color, _rotation, new Vector2(MainGame.CM.GetTexture(_texture).Width * _xAlign, MainGame.CM.GetTexture(_texture).Height * _yAlign), SpriteEffects.None, 0f);
     }
 
     public void SetPosition(Vector2 position)
     {
-        _rectangle = new((int)position.X, (int)position.Y, (int)(SPRITE_WIDTH * _scale), (int)(SPRITE_HEIGHT * _scale));
+        _rectangle = new((int)position.X, (int)position.Y, (int)(MainGame.CM.GetTexture(_texture).Width * _scale), (int)(MainGame.CM.GetTexture(_texture).Height * _scale));
     }
 
     public float DegRotation
@@ -57,7 +54,7 @@ public class Sprite
         }
         set
         {
-            _rotation = MathHelper.ToRadians(_rotation);
+            _rotation = MathHelper.ToRadians(value);
         }
     }
     public float Rotation
