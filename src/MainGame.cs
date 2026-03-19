@@ -14,7 +14,7 @@ public class MainGame : Game
     public static Vector2 Resolution {get;private set;}
     public static Content CM {get;private set;}
     public static Input Input {get;private set;}
-    public float DeltaTime {get;private set;}
+    public static float DeltaTime {get;private set;}
     private bool _running = true;
     private RenderTarget2D _renderTarget2D;
     private Scene _currentScene;

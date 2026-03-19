@@ -3,6 +3,7 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Tunnelnet.Components.Entities;
+using Tunnelnet.Utils.Managers;
 
 namespace Tunnelnet.Scenes;
 
@@ -19,6 +20,8 @@ public sealed class MainScene : Scene
         MainGame.Batch.Begin(samplerState:SamplerState.PointClamp);
         
         _player.Draw();
+
+        MainGame.Batch.DrawString(MainGame.CM.GetFont(Content.FontName.BASE), $"{_player.Position.X}:{_player.Position.Y}", new Vector2(0, 0), Color.White);
         
         MainGame.Batch.End();
         base.Draw();

@@ -1,4 +1,5 @@
 
+using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Tunnelnet.Utils.Components;
@@ -11,6 +12,7 @@ public class Player
     private Vector2 _position;
     private Sprite _sprite;
     private byte _rotationValue = 0;
+    private int _playerSpeed = 5;
     public Player(Vector2 position)
     {
         _position = position;
@@ -23,10 +25,11 @@ public class Player
     }
     public void Update()
     {
-        PerformControl();
+        PerformRotation();
+        PerformMovement();
     }
 
-    private void PerformControl()
+    private void PerformRotation()
     {
         sbyte direction = -1;
         if(MainGame.Input.CheckPressed(Input.Controls.TARGET_TOP))
@@ -66,5 +69,44 @@ public class Player
             }
         }
         _sprite.DegRotation = _rotationValue * 45f;
+    }
+
+    private void PerformMovement()
+    {
+        sbyte xMove = 0;
+        sbyte yMove = 0;
+        if(MainGame.Input.CheckPressed(Input.Controls.FORWARD))
+        {
+            yMove-= 1;
+        }
+        if(MainGame.Input.CheckPressed(Input.Controls.BACKWARD))
+        {
+            yMove+= 1;
+        }
+        if(MainGame.Input.CheckPressed(Input.Controls.LEFT))
+        {
+            xMove-= 1;
+        }
+        if(MainGame.Input.CheckPressed(Input.Controls.RIGHT))
+        {
+            xMove+= 1;
+        }
+        if(Math.Abs(xMove) == Math.Abs(yMove))
+        {
+            double diagonalMove = Math.Sqrt(xMove*xMove + yMove*yMove);
+            _position.X+= (float)(xMove * diagonalMove) * _playerSpeed * MainGame.DeltaTime;
+            _position.Y+= (float)(yMove * diagonalMove) * _playerSpeed * MainGame.DeltaTime;
+        } else
+        {
+            _position.X+= xMove * _playerSpeed * MainGame.DeltaTime;
+            _position.Y+= yMove * _playerSpeed * MainGame.DeltaTime;
+        }
+    }
+    public Vector2 Position
+    {
+        get
+        {
+            return _position;
+        }
     }
 }
