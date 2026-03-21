@@ -7,15 +7,15 @@ namespace Tunnelnet.Utils.Components.Text;
 public class Text
 {
     protected readonly Content.FontName _fontName;
-    private string _content;
+    protected string _content;
     private Vector2 _position;
     public Color Color{get;set;}
 
     public Text(Content.FontName fontName, string content, Vector2 position)
     {
         _fontName = fontName;
-        _content = content;
-        _position = position;
+        Position = position;
+        Content = content;
         Color = Color.White;
     }
 
@@ -29,7 +29,7 @@ public class Text
 
     public virtual void Draw()
     {
-        MainGame.Batch.DrawString(MainGame.CM.GetFont(_fontName), _content, _position, Color);
+        MainGame.Batch.DrawString(MainGame.CM.GetFont(_fontName), Content, Position, Color);
     }
 
     public virtual string Content
@@ -43,7 +43,7 @@ public class Text
             _content = value;
         }
     }
-    public virtual Vector2 Position
+    public Vector2 Position
     {
         get
         {
