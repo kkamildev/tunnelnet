@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace Tunnelnet.Utils.Components.Text;
 
-public sealed class RotatedText : AlignedText
+public class RotatedText : AlignedText
 {
     private float _rotation;
     
@@ -22,7 +22,7 @@ public sealed class RotatedText : AlignedText
 
     public override void Draw()
     {
-        MainGame.Batch.DrawString(MainGame.CM.GetFont(_fontName), Content, Position, Color, _rotation, new Vector2(_TextSize.X * _xAlign, _TextSize.Y * _yAlign), 1f, SpriteEffects.None, 0f);
+        MainGame.Batch.DrawString(MainGame.CM.GetFont(_fontName), Content, Position, Color, Rotation, new Vector2(_TextSize.X * _xAlign, _TextSize.Y * _yAlign), 1f, SpriteEffects.None, 0f);
     }
 
     public float DegRotation

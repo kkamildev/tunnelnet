@@ -73,10 +73,10 @@ public class MainGame : Game
 
     protected override void Draw(GameTime gameTime)
     {
-        GraphicsDevice.Clear(Color.Black);
         GraphicsDevice.SetRenderTarget(_renderTarget2D);
 
         // drawing logic here
+        GraphicsDevice.Clear(Color.CornflowerBlue);
         _currentScene.Draw();
 
         GraphicsDevice.SetRenderTarget(null);
