@@ -10,6 +10,7 @@ public class Text
     protected string _content;
     private Vector2 _position;
     public Color Color{get;set;}
+    public float Scale{get;set;}
 
     public Text(Content.FontName fontName, string content, Vector2 position)
     {
@@ -17,6 +18,7 @@ public class Text
         Position = position;
         Content = content;
         Color = Color.White;
+        Scale = 1f;
     }
 
     public Text(Content.FontName fontName, string content, Vector2 position, Color color)
@@ -25,6 +27,7 @@ public class Text
         _content = content;
         _position = position;
         Color = color;
+        Scale = 1f;
     }
 
     public virtual void Draw()

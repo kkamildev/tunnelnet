@@ -20,7 +20,7 @@ public sealed class ShadowedText : RotatedText
 
     public override void Draw()
     {
-        MainGame.Batch.DrawString(MainGame.CM.GetFont(_fontName), Content, Position + new Vector2(_shadowValue, _shadowValue), new Color(0, 0, 0, (int)Color.A), Rotation, new Vector2(_TextSize.X * _xAlign, _TextSize.Y * _yAlign), 1f, SpriteEffects.None, 0f);
+        MainGame.Batch.DrawString(MainGame.CM.GetFont(_fontName), Content, Position + new Vector2(_shadowValue, _shadowValue), new Color(0, 0, 0, (int)Color.A), Rotation, new Vector2(_TextSize.X * _xAlign, _TextSize.Y * _yAlign), Scale, SpriteEffects.None, 0f);
         base.Draw();
     }
     

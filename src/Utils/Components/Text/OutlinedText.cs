@@ -22,14 +22,14 @@ public sealed class OutlinedText : RotatedText
     public override void Draw()
     {
         Color shadowColor = new(0, 0, 0, (int)Color.A);
-        MainGame.Batch.DrawString(MainGame.CM.GetFont(_fontName), Content, Position + new Vector2(_outlineValue, 0), shadowColor, Rotation, new Vector2(_TextSize.X * _xAlign, _TextSize.Y * _yAlign), 1f, SpriteEffects.None, 0f);
-        MainGame.Batch.DrawString(MainGame.CM.GetFont(_fontName), Content, Position + new Vector2(-_outlineValue, 0), shadowColor, Rotation, new Vector2(_TextSize.X * _xAlign, _TextSize.Y * _yAlign), 1f, SpriteEffects.None, 0f);
-        MainGame.Batch.DrawString(MainGame.CM.GetFont(_fontName), Content, Position + new Vector2(0, _outlineValue), shadowColor, Rotation, new Vector2(_TextSize.X * _xAlign, _TextSize.Y * _yAlign), 1f, SpriteEffects.None, 0f);
-        MainGame.Batch.DrawString(MainGame.CM.GetFont(_fontName), Content, Position + new Vector2(0, -_outlineValue), shadowColor, Rotation, new Vector2(_TextSize.X * _xAlign, _TextSize.Y * _yAlign), 1f, SpriteEffects.None, 0f);
-        MainGame.Batch.DrawString(MainGame.CM.GetFont(_fontName), Content, Position + new Vector2(_outlineValue, _outlineValue), shadowColor, Rotation, new Vector2(_TextSize.X * _xAlign, _TextSize.Y * _yAlign), 1f, SpriteEffects.None, 0f);
-        MainGame.Batch.DrawString(MainGame.CM.GetFont(_fontName), Content, Position + new Vector2(-_outlineValue, -_outlineValue), shadowColor, Rotation, new Vector2(_TextSize.X * _xAlign, _TextSize.Y * _yAlign), 1f, SpriteEffects.None, 0f);
-        MainGame.Batch.DrawString(MainGame.CM.GetFont(_fontName), Content, Position + new Vector2(_outlineValue, -_outlineValue), shadowColor, Rotation, new Vector2(_TextSize.X * _xAlign, _TextSize.Y * _yAlign), 1f, SpriteEffects.None, 0f);
-        MainGame.Batch.DrawString(MainGame.CM.GetFont(_fontName), Content, Position + new Vector2(-_outlineValue, _outlineValue), shadowColor, Rotation, new Vector2(_TextSize.X * _xAlign, _TextSize.Y * _yAlign), 1f, SpriteEffects.None, 0f);
+        MainGame.Batch.DrawString(MainGame.CM.GetFont(_fontName), Content, Position + new Vector2(_outlineValue, 0), shadowColor, Rotation, new Vector2(_TextSize.X * _xAlign, _TextSize.Y * _yAlign), Scale, SpriteEffects.None, 0f);
+        MainGame.Batch.DrawString(MainGame.CM.GetFont(_fontName), Content, Position + new Vector2(-_outlineValue, 0), shadowColor, Rotation, new Vector2(_TextSize.X * _xAlign, _TextSize.Y * _yAlign), Scale, SpriteEffects.None, 0f);
+        MainGame.Batch.DrawString(MainGame.CM.GetFont(_fontName), Content, Position + new Vector2(0, _outlineValue), shadowColor, Rotation, new Vector2(_TextSize.X * _xAlign, _TextSize.Y * _yAlign), Scale, SpriteEffects.None, 0f);
+        MainGame.Batch.DrawString(MainGame.CM.GetFont(_fontName), Content, Position + new Vector2(0, -_outlineValue), shadowColor, Rotation, new Vector2(_TextSize.X * _xAlign, _TextSize.Y * _yAlign), Scale, SpriteEffects.None, 0f);
+        MainGame.Batch.DrawString(MainGame.CM.GetFont(_fontName), Content, Position + new Vector2(_outlineValue, _outlineValue), shadowColor, Rotation, new Vector2(_TextSize.X * _xAlign, _TextSize.Y * _yAlign), Scale, SpriteEffects.None, 0f);
+        MainGame.Batch.DrawString(MainGame.CM.GetFont(_fontName), Content, Position + new Vector2(-_outlineValue, -_outlineValue), shadowColor, Rotation, new Vector2(_TextSize.X * _xAlign, _TextSize.Y * _yAlign), Scale, SpriteEffects.None, 0f);
+        MainGame.Batch.DrawString(MainGame.CM.GetFont(_fontName), Content, Position + new Vector2(_outlineValue, -_outlineValue), shadowColor, Rotation, new Vector2(_TextSize.X * _xAlign, _TextSize.Y * _yAlign), Scale, SpriteEffects.None, 0f);
+        MainGame.Batch.DrawString(MainGame.CM.GetFont(_fontName), Content, Position + new Vector2(-_outlineValue, _outlineValue), shadowColor, Rotation, new Vector2(_TextSize.X * _xAlign, _TextSize.Y * _yAlign), Scale, SpriteEffects.None, 0f);
         base.Draw();
     }
     

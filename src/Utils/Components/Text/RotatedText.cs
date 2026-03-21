@@ -22,7 +22,7 @@ public class RotatedText : AlignedText
 
     public override void Draw()
     {
-        MainGame.Batch.DrawString(MainGame.CM.GetFont(_fontName), Content, Position, Color, Rotation, new Vector2(_TextSize.X * _xAlign, _TextSize.Y * _yAlign), 1f, SpriteEffects.None, 0f);
+        MainGame.Batch.DrawString(MainGame.CM.GetFont(_fontName), Content, Position, Color, Rotation, new Vector2(_TextSize.X * _xAlign, _TextSize.Y * _yAlign), Scale, SpriteEffects.None, 0f);
     }
 
     public float DegRotation
