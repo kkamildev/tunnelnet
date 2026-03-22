@@ -21,20 +21,20 @@ public class Sprite
         _xAlign = 0;
         _yAlign = 0;
         _rotation = 0;
-        SetPosition(position);
+        SetPosition(position, _scale);
     }
     public Sprite(Content.TextureName texture, Vector2 position, float scale, Color color) : this(texture, position)
     {
         Color = color;
         _scale = scale;
-        SetPosition(position);
+        SetPosition(position, _scale);
     }
     public Sprite(Content.TextureName texture, Vector2 position, float scale, Color color, float xAlign, float yAlign, float rotation) : this(texture, position, scale, color)
     {
         _xAlign = xAlign;
         _yAlign = yAlign;
         _rotation = rotation;
-        SetPosition(position);
+        SetPosition(position, _scale);
     }
 
     public void Draw()
@@ -42,9 +42,15 @@ public class Sprite
         MainGame.Batch.Draw(MainGame.CM.GetTexture(_texture), _rectangle, null, Color, _rotation, new Vector2(MainGame.CM.GetTexture(_texture).Width * _xAlign, MainGame.CM.GetTexture(_texture).Height * _yAlign), SpriteEffects.None, 0f);
     }
 
+    private void SetPosition(Vector2 position, float scale)
+    {
+        _rectangle = new((int)position.X, (int)position.Y, (int)(MainGame.CM.GetTexture(_texture).Width * scale), (int)(MainGame.CM.GetTexture(_texture).Height * scale));
+    }
+
     public void SetPosition(Vector2 position)
     {
-        _rectangle = new((int)position.X, (int)position.Y, (int)(MainGame.CM.GetTexture(_texture).Width * _scale), (int)(MainGame.CM.GetTexture(_texture).Height * _scale));
+        _rectangle.X = (int)position.X;
+        _rectangle.Y = (int)position.Y;
     }
 
     public float DegRotation

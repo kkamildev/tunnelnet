@@ -45,8 +45,9 @@ public sealed partial class Content
         
         _textures = new()
         {
+            {TextureName.PIXEL, pixel},
             { TextureName.MAIN_PLAYER, _contentManager.Load<Texture2D>(_texturesPath + "players/mainPlayer") },
-            {TextureName.PIXEL, pixel}
+            {TextureName.GRASS_TILE, _contentManager.Load<Texture2D>(_texturesPath + "tiles/grass")}
         };
     }
     
