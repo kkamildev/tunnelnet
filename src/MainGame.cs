@@ -51,7 +51,7 @@ public class MainGame : Game
         Resolution = new Vector2(1600, 900);
         _renderTarget2D = new(GraphicsDevice, (int)Resolution.X, (int)Resolution.Y);
 
-        _currentScene = new MainScene(this);
+        _currentScene = new HubScene(this);
     }
 
     protected override void Update(GameTime gameTime)
