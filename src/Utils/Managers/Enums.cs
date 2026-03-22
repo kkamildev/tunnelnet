@@ -15,7 +15,8 @@ public sealed partial class Content
     }
     public enum TextureName
     {
-        MAIN_PLAYER
+        MAIN_PLAYER,
+        PIXEL
     }
 
     public enum SoundName

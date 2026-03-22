@@ -22,7 +22,7 @@ public sealed class FadeAnimation : Timer
                 return Progress / _fadeInBarrier;
             } else if(_fadeOutBarrier <= Progress)
             {
-                return Math.Max(1f - Progress, 0);
+                return (1f - Progress) / (1f - _fadeOutBarrier);
             } else
             {
                 return 1f;

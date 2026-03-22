@@ -1,9 +1,9 @@
-
-namespace Tunnelnet.Utils.Components;
-
 using Microsoft.Xna.Framework;
 using Tunnelnet.Utils.Managers;
 using Microsoft.Xna.Framework.Graphics;
+
+namespace Tunnelnet.Utils.Components;
+
 
 public class Sprite
 {
@@ -21,6 +21,7 @@ public class Sprite
         _xAlign = 0;
         _yAlign = 0;
         _rotation = 0;
+        SetPosition(position);
     }
     public Sprite(Content.TextureName texture, Vector2 position, float scale, Color color) : this(texture, position)
     {
@@ -72,6 +73,14 @@ public class Sprite
         get
         {
             return _rectangle;
+        }
+    }
+    public float Alpha
+    {
+        set
+        {
+            Color newColor = new(Color.R, Color.G, Color.B, value);
+            Color = newColor;
         }
     }
 }

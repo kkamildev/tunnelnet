@@ -1,6 +1,7 @@
 
 
 using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -39,9 +40,13 @@ public sealed partial class Content
 
     public void LoadTextures()
     {
+        Texture2D pixel = new(MainGame.Graph.GraphicsDevice, 1, 1);
+        pixel.SetData([Color.White]);
+        
         _textures = new()
         {
             { TextureName.MAIN_PLAYER, _contentManager.Load<Texture2D>(_texturesPath + "players/mainPlayer") },
+            {TextureName.PIXEL, pixel}
         };
     }
     

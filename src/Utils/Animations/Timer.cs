@@ -40,5 +40,9 @@ public class Timer
         {
             return _elapsedSeconds / _seconds;
         }
+        set
+        {
+            _elapsedSeconds = _seconds * value;
+        }
     }
 }

@@ -76,7 +76,7 @@ public class MainGame : Game
         GraphicsDevice.SetRenderTarget(_renderTarget2D);
 
         // drawing logic here
-        GraphicsDevice.Clear(Color.CornflowerBlue);
+        GraphicsDevice.Clear(Color.Black);
         _currentScene.Draw();
 
         GraphicsDevice.SetRenderTarget(null);
