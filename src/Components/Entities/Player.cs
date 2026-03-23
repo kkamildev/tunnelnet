@@ -93,9 +93,8 @@ public class Player
         }
         if(Math.Abs(xMove) == Math.Abs(yMove))
         {
-            double diagonalMove = Math.Sqrt(xMove*xMove + yMove*yMove);
-            _position.X+= (float)(xMove * diagonalMove) * _playerSpeed * MainGame.DeltaTime;
-            _position.Y+= (float)(yMove * diagonalMove) * _playerSpeed * MainGame.DeltaTime;
+            _position.X+= (float)(xMove * Math.Sqrt(2)) * _playerSpeed * MainGame.DeltaTime;
+            _position.Y+= (float)(yMove * Math.Sqrt(2)) * _playerSpeed * MainGame.DeltaTime;
         } else
         {
             _position.X+= xMove * _playerSpeed * MainGame.DeltaTime;

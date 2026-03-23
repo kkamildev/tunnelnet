@@ -4,7 +4,7 @@ using Microsoft.Xna.Framework;
 using Tunnelnet.Utils.Components;
 using Tunnelnet.Utils.Managers;
 
-namespace Tunnelnet.Components.World;
+namespace Tunnelnet.Components.World.Tiles;
 
 public class Tile
 {
@@ -12,10 +12,13 @@ public class Tile
 
     protected Vector2 _position;
 
+    private static Vector2 aligmentValue = MainGame.Resolution / 2 - new Vector2(32, 32) / 2; 
+    private static readonly int tileSize = 64;
+
     public Tile(Content.TextureName texture, Vector2 position)
     {
         _position = position;
-        _sprite = new(texture, _position * 64, 2f, Color.White);
+        _sprite = new(texture, _position * tileSize, tileSize / (float)MainGame.CM.GetTexture(texture).Width, Color.White);
     }
 
     public void Draw()
@@ -25,7 +28,7 @@ public class Tile
 
     public void Update(Vector2 cameraPosition)
     {
-        _sprite.SetPosition((_position - cameraPosition) * 64f + MainGame.Resolution / 2 - new Vector2(_sprite.Rectangle.Width, _sprite.Rectangle.Height) / 2);
+        _sprite.SetPosition((_position - cameraPosition) * tileSize + aligmentValue);
     }
 
     public Vector2 Position

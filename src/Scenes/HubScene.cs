@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Tunnelnet.Utils.Managers;
 using Tunnelnet.Utils.Components.Wallpapers;
 using Tunnelnet.Components.Entities;
-using Tunnelnet.Components.World;
+using Tunnelnet.Components.World.Tiles;
 
 namespace Tunnelnet.Scenes;
 
@@ -23,7 +23,7 @@ public sealed class HubScene : Scene
         };
         _player = new(Vector2.Zero);
         _tile = new Tile(Content.TextureName.GRASS_TILE, new Vector2(0, 0));
-        _tile2 = new Tile(Content.TextureName.GRASS_TILE, new Vector2(1, 1));
+        _tile2 = new Tile(Content.TextureName.GRASS_TILE, new Vector2(0, 1));
         
     }
 
