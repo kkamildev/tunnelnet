@@ -47,7 +47,6 @@ public sealed class HubScene : Scene
     {
         MainGame.Batch.Begin(samplerState:SamplerState.PointClamp, blendState: BlendState.NonPremultiplied);
 
-        _loadingWallpaper.Draw();
         if(_loadingWallpaper.Progress >= 0.88f)
         {
             _game.GraphicsDevice.Clear(Color.Green);
@@ -56,6 +55,7 @@ public sealed class HubScene : Scene
             _player.Draw();
             MainGame.Batch.DrawString(MainGame.CM.GetFont(Content.FontName.SMALL), _player.Position.ToString(), Vector2.Zero, Color.White);
         }
+        _loadingWallpaper.Draw();
 
         MainGame.Batch.End();
     }

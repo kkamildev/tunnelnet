@@ -12,7 +12,7 @@ public class Player
     private Vector2 _position;
     private Sprite _sprite;
     private byte _rotationValue = 0;
-    private int _playerSpeed = 5;
+    private int _playerSpeed = 7;
     private Vector2 _previrousMousePosiston;
     public Player(Vector2 position)
     {
@@ -116,8 +116,8 @@ public class Player
         }
         if(Math.Abs(xMove) == Math.Abs(yMove))
         {
-            _position.X+= (float)(xMove * Math.Sqrt(2)) * _playerSpeed * MainGame.DeltaTime;
-            _position.Y+= (float)(yMove * Math.Sqrt(2)) * _playerSpeed * MainGame.DeltaTime;
+            _position.X+= (float)(xMove * Math.Sqrt(2) / 2) * _playerSpeed * MainGame.DeltaTime;
+            _position.Y+= (float)(yMove * Math.Sqrt(2) / 2) * _playerSpeed * MainGame.DeltaTime;
         } else
         {
             _position.X+= xMove * _playerSpeed * MainGame.DeltaTime;
