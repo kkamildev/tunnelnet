@@ -7,6 +7,7 @@ using Tunnelnet.Utils.Managers;
 using Tunnelnet.Utils.Components.Wallpapers;
 using Tunnelnet.Components.Entities;
 using Tunnelnet.Components.World.Tiles;
+using Tunnelnet.Components.World.Gen;
 
 namespace Tunnelnet.Scenes;
 
@@ -14,7 +15,7 @@ public sealed class HubScene : Scene
 {
     private readonly LoadingWallpaper _loadingWallpaper;
     private Player _player;
-    private Tile _tile, _tile2;
+    private Chunk _chuck, _chuck2;
     public HubScene(MainGame game) : base(game)
     {
         _loadingWallpaper = new(Content.TextureName.PIXEL, "Strange Forest", "The Dense center of adventure", 3, 0.22f, 0.88f)
@@ -22,8 +23,23 @@ public sealed class HubScene : Scene
             Color = Color.Black
         };
         _player = new(Vector2.Zero);
-        _tile = new Tile(Content.TextureName.GRASS_TILE, new Vector2(0, 0));
-        _tile2 = new Tile(Content.TextureName.GRASS_TILE, new Vector2(0, 1));
+        _chuck = new (Vector2.Zero);
+        _chuck2 = new (new Vector2(1, 0));
+
+        for(byte i = 0;i<16;i++)
+        {
+            for(byte j = 0;j<16;j++)
+            {
+                _chuck.SetTile(j, i, new Tile(Content.TextureName.GRASS_TILE));
+            }
+        }
+        for(byte i = 0;i<16;i++)
+        {
+            for(byte j = 0;j<16;j++)
+            {
+                _chuck2.SetTile(j, i, new Tile(Content.TextureName.GRASS_TILE));
+            }
+        }
         
     }
 
@@ -35,9 +51,10 @@ public sealed class HubScene : Scene
         if(_loadingWallpaper.Progress >= 0.88f)
         {
             _game.GraphicsDevice.Clear(Color.Green);
-            _tile.Draw();
-            _tile2.Draw();
+            _chuck.Draw(_player.Position);
+            _chuck2.Draw(_player.Position);
             _player.Draw();
+            MainGame.Batch.DrawString(MainGame.CM.GetFont(Content.FontName.SMALL), _player.Position.ToString(), Vector2.Zero, Color.White);
         }
 
         MainGame.Batch.End();
@@ -46,11 +63,11 @@ public sealed class HubScene : Scene
     public override void Update()
     {
         _loadingWallpaper.Update();
-        _tile.Update(_player.Position);
-        _tile2.Update(_player.Position);
         if(_loadingWallpaper.Progress >= 0.88f)
         {
             _player.Update();
+            _chuck.Update(_player.Position);
+            _chuck2.Update(_player.Position);
         }
     }
 }
