@@ -24,7 +24,6 @@ public class Tile
     public void Draw()
     {
         _sprite.Draw();
-        MainGame.Batch.DrawString(MainGame.CM.GetFont(Content.FontName.SMALL), "obj in screen", new Vector2(0, 50), Color.White);
     }
 
     public void Update(Vector2 cameraPosition)

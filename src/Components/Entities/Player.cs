@@ -13,6 +13,7 @@ public class Player
     private Sprite _sprite;
     private byte _rotationValue = 0;
     private int _playerSpeed = 5;
+    private Vector2 _previrousMousePosiston;
     public Player(Vector2 position)
     {
         _position = position;
@@ -26,6 +27,7 @@ public class Player
     public void Update()
     {
         PerformRotation();
+        PerformMouseRotation();
         PerformMovement();
     }
 
@@ -69,6 +71,27 @@ public class Player
             }
         }
         _sprite.DegRotation = _rotationValue * 45f;
+    }
+
+    private void PerformMouseRotation()
+    {
+        if(_previrousMousePosiston != MainGame.Input.MousePosition)
+        {
+            Vector2 direction = MainGame.Input.MousePosition - MainGame.Resolution / 2f;
+            float angle = -(float)Math.Atan2(direction.X, direction.Y);
+
+            _rotationValue = (byte)(Math.Round(MathHelper.ToDegrees(angle) + 180 + 32) / 45);
+            _sprite.DegRotation = _rotationValue * 45f;
+
+            // mouse border
+            Vector2 centerMousePos = MainGame.Input.MousePosition - MainGame.Resolution / 2f;
+            if(Math.Abs(centerMousePos.X) > 200 || Math.Abs(centerMousePos.Y) > 200)
+            {
+               MainGame.Input.MousePosition -= new Vector2((float)(Math.Sin(-angle) * 100), (float)(Math.Cos(-angle) * 100));
+            }
+            _previrousMousePosiston = MainGame.Input.MousePosition;
+        }
+        
     }
 
     private void PerformMovement()
