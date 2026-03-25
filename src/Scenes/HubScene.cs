@@ -37,7 +37,7 @@ public sealed class HubScene : Scene
         {
             for(byte j = 0;j<16;j++)
             {
-                _chuck2.SetTile(j, i, new Tile(Content.TextureName.GRASS_TILE));
+                _chuck2.SetTile(j, i, new Tile(Content.TextureName.DARK_GRASS_TILE));
             }
         }
         

@@ -17,7 +17,8 @@ public sealed partial class Content
     {
         MAIN_PLAYER,
         PIXEL,
-        GRASS_TILE
+        GRASS_TILE,
+        DARK_GRASS_TILE
     }
 
     public enum SoundName

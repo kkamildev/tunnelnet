@@ -47,7 +47,8 @@ public sealed partial class Content
         {
             {TextureName.PIXEL, pixel},
             { TextureName.MAIN_PLAYER, _contentManager.Load<Texture2D>(_texturesPath + "players/mainPlayer") },
-            {TextureName.GRASS_TILE, _contentManager.Load<Texture2D>(_texturesPath + "tiles/grass")}
+            {TextureName.GRASS_TILE, _contentManager.Load<Texture2D>(_texturesPath + "tiles/grass")},
+            {TextureName.DARK_GRASS_TILE, _contentManager.Load<Texture2D>(_texturesPath + "tiles/grassDark")}
         };
     }
     
