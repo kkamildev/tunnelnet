@@ -57,4 +57,13 @@ public class Text
             _position = value;
         }
     }
+
+    public float Alpha
+    {
+        set
+        {
+            Color newColor = new(Color.R, Color.G, Color.B, value);
+            Color = newColor;
+        }
+    }
 }

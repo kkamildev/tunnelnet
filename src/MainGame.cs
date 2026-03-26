@@ -23,7 +23,7 @@ public class MainGame : Game
     {
         Graph = new GraphicsDeviceManager(this);
         Content.RootDirectory = "Content";
-        IsMouseVisible = true;
+        IsMouseVisible = false;
     }
 
     protected override void Initialize()
@@ -51,7 +51,7 @@ public class MainGame : Game
         Resolution = new Vector2(1600, 900);
         _renderTarget2D = new(GraphicsDevice, (int)Resolution.X, (int)Resolution.Y);
 
-        _currentScene = new MainScene(this);
+        _currentScene = new HubScene(this);
     }
 
     protected override void Update(GameTime gameTime)
@@ -76,7 +76,7 @@ public class MainGame : Game
         GraphicsDevice.SetRenderTarget(_renderTarget2D);
 
         // drawing logic here
-        GraphicsDevice.Clear(Color.CornflowerBlue);
+        GraphicsDevice.Clear(Color.Black);
         _currentScene.Draw();
 
         GraphicsDevice.SetRenderTarget(null);

@@ -2,6 +2,7 @@
 
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
 namespace Tunnelnet.Utils.Managers;
@@ -11,6 +12,7 @@ public sealed partial class Input
 {
     private KeyboardState _currentKeyboardState;
     private KeyboardState _previrousKeyboardState;
+    private MouseState _currentMouseState;
     public enum Controls {
         FORWARD = 0,
         BACKWARD = 1,
@@ -46,6 +48,7 @@ public sealed partial class Input
     public void SetCurrentState()
     {
         _currentKeyboardState = Keyboard.GetState();
+        _currentMouseState = Mouse.GetState();
     }
     
     public void SetPrevirousState()
@@ -91,5 +94,18 @@ public sealed partial class Input
     public void SetControl(Controls control, Keys newKey)
     {
         _controls[control] = newKey;
+    }
+
+    public Vector2 MousePosition
+    {
+        get
+        {
+            Vector2 mousePrimaryPos = _currentMouseState.Position.ToVector2();
+            return mousePrimaryPos / MainGame.ScreenSize * MainGame.Resolution;
+        }
+        set
+        {
+            Mouse.SetPosition((int)(value.X / MainGame.Resolution.X * MainGame.ScreenSize.X), (int)(value.Y / MainGame.Resolution.Y * MainGame.ScreenSize.Y));
+        }
     }
 }

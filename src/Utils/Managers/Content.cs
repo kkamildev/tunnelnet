@@ -1,6 +1,7 @@
 
 
 using System.Collections.Generic;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
@@ -39,9 +40,18 @@ public sealed partial class Content
 
     public void LoadTextures()
     {
+        Texture2D pixel = new(MainGame.Graph.GraphicsDevice, 1, 1);
+        pixel.SetData([Color.White]);
+        
         _textures = new()
         {
+            {TextureName.PIXEL, pixel},
             { TextureName.MAIN_PLAYER, _contentManager.Load<Texture2D>(_texturesPath + "players/mainPlayer") },
+            {TextureName.GRASS_TILE, _contentManager.Load<Texture2D>(_texturesPath + "tiles/grass")},
+            {TextureName.DARK_GRASS_TILE, _contentManager.Load<Texture2D>(_texturesPath + "tiles/grassDark")},
+            {TextureName.LIGHT_GRASS_TILE, _contentManager.Load<Texture2D>(_texturesPath + "tiles/grassLight")},
+            {TextureName.DIRT_PATH, _contentManager.Load<Texture2D>(_texturesPath + "paths/dirtPath")},
+            {TextureName.DIRT_PATH_END, _contentManager.Load<Texture2D>(_texturesPath + "paths/dirtPathEnd")}
         };
     }
     

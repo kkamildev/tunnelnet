@@ -15,7 +15,13 @@ public sealed partial class Content
     }
     public enum TextureName
     {
-        MAIN_PLAYER
+        MAIN_PLAYER,
+        PIXEL,
+        GRASS_TILE,
+        DARK_GRASS_TILE,
+        LIGHT_GRASS_TILE,
+        DIRT_PATH,
+        DIRT_PATH_END
     }
 
     public enum SoundName
