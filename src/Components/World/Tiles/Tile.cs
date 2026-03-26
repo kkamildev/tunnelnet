@@ -1,45 +1,13 @@
 
 
-using Microsoft.Xna.Framework;
-using Tunnelnet.Utils.Components;
+using Tunnelnet.Components.World.Objects;
 using Tunnelnet.Utils.Managers;
 
 namespace Tunnelnet.Components.World.Tiles;
 
-public class Tile
+public class Tile : Object
 {
-    protected Sprite _sprite;
-
-    protected Vector2 _position;
-
-    public static Vector2 aligmentValue = MainGame.Resolution / 2 - new Vector2(32, 32) / 2; 
-    public static readonly int tileSize = 64;
-
-    public Tile(Content.TextureName texture)
+    public Tile(Content.TextureName texture) : base(texture)
     {
-        _position = Vector2.Zero;
-        _sprite = new(texture, _position * tileSize, tileSize / (float)MainGame.CM.GetTexture(texture).Width, Color.White);
-    }
-
-    public void Draw()
-    {
-        _sprite.Draw();
-    }
-
-    public void Update(Vector2 cameraPosition)
-    {
-        _sprite.SetPosition((_position - cameraPosition) * tileSize + aligmentValue);
-    }
-
-    public Vector2 Position
-    {
-        set
-        {
-            _position = value;
-        }
-        get
-        {
-            return _position;
-        }
     }
 }
