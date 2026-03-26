@@ -21,7 +21,10 @@ public sealed partial class Content
         DARK_GRASS_TILE,
         LIGHT_GRASS_TILE,
         DIRT_PATH,
-        DIRT_PATH_END
+        DIRT_PATH_END,
+        ROSES,
+        DANDELIONS,
+        LILIES
     }
 
     public enum SoundName
