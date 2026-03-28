@@ -3,6 +3,7 @@ using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Tunnelnet.Utils.Components;
+using Tunnelnet.Utils.Components.Bars;
 using Tunnelnet.Utils.Components.Text;
 using Tunnelnet.Utils.Managers;
 
@@ -18,6 +19,7 @@ public class Player
         private OutlinedText _nicknameText;
         private OutlinedText _floorText, _floorSubtitleText;
         private Sprite _heartIcon;
+        private ProcentBar _healthBar;
         public PlayerInterface(Player player, Vector2 position)
         {
             _player = player;
@@ -25,13 +27,15 @@ public class Player
             _nicknameText = new(Content.FontName.SMALL, _player.Nickname, position + new Vector2(8, 6), 0f, 0f, 3);
             _floorSubtitleText = new(Content.FontName.SMALL, "Floor", position + new Vector2(50, 90), 0.5f, 0.5f, 3);
             _floorText = new(Content.FontName.MEDIUM, "1", position + new Vector2(50, 60), 0.5f, 0.5f, 4);
-            _heartIcon = new(Content.TextureName.HEART_ICON, position + new Vector2(90, 30), 2f, Color.White);
+            _heartIcon = new(Content.TextureName.HEART_ICON, position + new Vector2(90, 36), 2f, Color.White);
+            _healthBar = new(new Rectangle(125, 51, 300, 44), player.HealthPoints / (float)player.MaxHealthPoints, Content.FontName.MEDIUM, "HP: ", new Color(179, 27, 16));
         }
 
         public void Draw()
         {
             // _interfaceSprite.Draw();
             _nicknameText.Draw();
+            _healthBar.Draw();
             _heartIcon.Draw();
             if(_floorText != null)
             {
@@ -47,6 +51,15 @@ public class Player
                 _floorText = value;
             }
         }
+
+        public ProcentBar HealthBar
+        {
+            get
+            {
+                return _healthBar;
+            }
+        }
+
         public int Floor
         {
             set
@@ -62,12 +75,16 @@ public class Player
     private Vector2 _previrousMousePosiston;
     public PlayerInterface Interface{get;private set;}
     public string Nickname{get;private set;}
+    private int _healthPoints;
+    public int MaxHealthPoints{get;set;}
     public Player(Vector2 position, Vector2 interfacePosition, string nickname)
     {
         _position = position;
         Nickname = nickname;
         _sprite = new(Content.TextureName.MAIN_PLAYER, new Vector2(MainGame.Resolution.X / 2f, MainGame.Resolution.Y / 2f), 2f, Color.White, 0.5f, 0.5f, 0f);
         Interface = new(this, interfacePosition);
+        MaxHealthPoints = 100;
+        HealthPoints = MaxHealthPoints;
     }
 
     public void Draw()
@@ -185,6 +202,18 @@ public class Player
         get
         {
             return _position;
+        }
+    }
+    public int HealthPoints
+    {
+        get
+        {
+            return _healthPoints;
+        }
+        set
+        {
+            _healthPoints = value;
+            Interface.HealthBar.Progress = _healthPoints / MaxHealthPoints;
         }
     }
 }

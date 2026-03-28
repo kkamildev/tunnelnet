@@ -1,6 +1,7 @@
 
 
 
+using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Tunnelnet.Utils.Managers;
@@ -36,5 +37,5 @@ public sealed class OutlinedText : RotatedText
         MainGame.Batch.DrawString(MainGame.CM.GetFont(_fontName), Content, Position + new Vector2(-_outlineValue, _outlineValue), shadowColor, Rotation, new Vector2(_TextSize.X * _xAlign, _TextSize.Y * _yAlign), Scale, SpriteEffects.None, 0f);
         base.Draw();
     }
-    
+
 }
