@@ -7,6 +7,7 @@ public sealed partial class Content
     public enum FontName
     {
         BASE,
+        SMALLER,
         SMALL,
         BIG,
         BIGGER,
@@ -24,7 +25,9 @@ public sealed partial class Content
         DIRT_PATH_END,
         ROSES,
         DANDELIONS,
-        LILIES
+        LILIES,
+        PLAYER_STATS,
+        HEART_ICON
     }
 
     public enum SoundName

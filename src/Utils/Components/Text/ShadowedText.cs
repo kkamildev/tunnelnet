@@ -13,6 +13,10 @@ public sealed class ShadowedText : RotatedText
     {
         _shadowValue = shadowValue;
     }
+    public ShadowedText(Content.FontName fontName, string content, Vector2 position, float xAlign, float yAlign, float rotation, byte shadowValue, Color color) : base(fontName, content, position, xAlign, yAlign, rotation, color)
+    {
+        _shadowValue = shadowValue;
+    }
     public ShadowedText(Content.FontName fontName, string content, Vector2 position, float xAlign, float yAlign, byte shadowValue) : base(fontName, content, position, xAlign, yAlign, 0f)
     {
         _shadowValue = shadowValue;

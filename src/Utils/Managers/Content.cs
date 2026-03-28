@@ -34,7 +34,8 @@ public sealed partial class Content
             { FontName.BIG, _contentManager.Load<SpriteFont>(_fontsPath + "big") },
             { FontName.BIGGER, _contentManager.Load<SpriteFont>(_fontsPath + "bigger") },
             { FontName.MEDIUM, _contentManager.Load<SpriteFont>(_fontsPath + "medium") },
-            { FontName.HUGE, _contentManager.Load<SpriteFont>(_fontsPath + "huge") }
+            { FontName.HUGE, _contentManager.Load<SpriteFont>(_fontsPath + "huge") },
+            { FontName.SMALLER, _contentManager.Load<SpriteFont>(_fontsPath + "smaller") }
         };
     }
 
@@ -54,7 +55,9 @@ public sealed partial class Content
             {TextureName.DIRT_PATH_END, _contentManager.Load<Texture2D>(_texturesPath + "paths/dirtPathEnd")},
             {TextureName.ROSES, _contentManager.Load<Texture2D>(_texturesPath + "flowers/roses")},
             {TextureName.DANDELIONS, _contentManager.Load<Texture2D>(_texturesPath + "flowers/dandelions")},
-            {TextureName.LILIES, _contentManager.Load<Texture2D>(_texturesPath + "flowers/lilies")}
+            {TextureName.LILIES, _contentManager.Load<Texture2D>(_texturesPath + "flowers/lilies")},
+            {TextureName.PLAYER_STATS, _contentManager.Load<Texture2D>(_texturesPath + "UI/playerStats")},
+            {TextureName.HEART_ICON, _contentManager.Load<Texture2D>(_texturesPath + "UI/icons/heart")}
         };
     }
     

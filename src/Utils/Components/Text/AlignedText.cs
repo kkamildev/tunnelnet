@@ -16,6 +16,11 @@ public class AlignedText : Text
         _xAlign = xAlign;
         _yAlign = yAlign;
     }
+    public AlignedText(Content.FontName fontName, string content, Vector2 position, float xAlign, float yAlign, Color color) : base(fontName, content, position, color)
+    {
+        _xAlign = xAlign;
+        _yAlign = yAlign;
+    }
 
     public override void Draw()
     {

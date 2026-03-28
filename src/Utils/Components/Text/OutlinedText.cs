@@ -14,6 +14,10 @@ public sealed class OutlinedText : RotatedText
     {
         _outlineValue = outlineValue;
     }
+    public OutlinedText(Content.FontName fontName, string content, Vector2 position, float xAlign, float yAlign, float rotation, byte outlineValue, Color color) : base(fontName, content, position, xAlign, yAlign, rotation, color)
+    {
+        _outlineValue = outlineValue;
+    }
     public OutlinedText(Content.FontName fontName, string content, Vector2 position, float xAlign, float yAlign, byte outlineValue) : base(fontName, content, position, xAlign, yAlign, 0f)
     {
         _outlineValue = outlineValue;

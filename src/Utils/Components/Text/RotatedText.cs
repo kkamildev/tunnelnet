@@ -14,8 +14,16 @@ public class RotatedText : AlignedText
     {
         _rotation = rotation;
     }
+    public RotatedText(Content.FontName fontName, string content, Vector2 position, float xAlign, float yAlign, float rotation, Color color) : base(fontName, content, position, xAlign, yAlign, color)
+    {
+        _rotation = rotation;
+    }
 
     public RotatedText(Content.FontName fontName, string content, Vector2 position, float xAlign, float yAlign) : base(fontName, content, position, xAlign, yAlign)
+    {
+        _rotation = 0f;
+    }
+    public RotatedText(Content.FontName fontName, string content, Vector2 position, float xAlign, float yAlign, Color color) : base(fontName, content, position, xAlign, yAlign, color)
     {
         _rotation = 0f;
     }

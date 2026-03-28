@@ -24,7 +24,7 @@ public sealed class HubScene : Scene
         {
             Color = Color.Black
         };
-        _player = new(Vector2.Zero);
+        _player = new(Vector2.Zero, Vector2.Zero, "Kajtoszex");
         _chuck = new (Vector2.Zero);
         _chuck2 = new (new Vector2(1, 0));
         _chuck3 = new (new Vector2(0, 1));
@@ -68,7 +68,7 @@ public sealed class HubScene : Scene
             _chuck2.Draw(_player.Position);
             _chuck3.Draw(_player.Position);
             _player.Draw();
-            MainGame.Batch.DrawString(MainGame.CM.GetFont(Content.FontName.SMALL), _player.Position.ToString(), Vector2.Zero, Color.White);
+            _player.DrawInterface();
         }
         _loadingWallpaper.Draw();
 

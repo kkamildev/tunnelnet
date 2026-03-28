@@ -3,27 +3,83 @@ using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Tunnelnet.Utils.Components;
+using Tunnelnet.Utils.Components.Text;
 using Tunnelnet.Utils.Managers;
 
 namespace Tunnelnet.Components.Entities;
 
 public class Player
 {
+
+    public class PlayerInterface
+    {
+        private Player _player;
+        private Sprite _interfaceSprite;
+        private OutlinedText _nicknameText;
+        private OutlinedText _floorText, _floorSubtitleText;
+        private Sprite _heartIcon;
+        public PlayerInterface(Player player, Vector2 position)
+        {
+            _player = player;
+            _interfaceSprite = new(Content.TextureName.PLAYER_STATS, position, 2f, Color.White);
+            _nicknameText = new(Content.FontName.SMALL, _player.Nickname, position + new Vector2(8, 6), 0f, 0f, 3);
+            _floorSubtitleText = new(Content.FontName.SMALL, "Floor", position + new Vector2(50, 90), 0.5f, 0.5f, 3);
+            _floorText = new(Content.FontName.MEDIUM, "1", position + new Vector2(50, 60), 0.5f, 0.5f, 4);
+            _heartIcon = new(Content.TextureName.HEART_ICON, position + new Vector2(90, 30), 2f, Color.White);
+        }
+
+        public void Draw()
+        {
+            // _interfaceSprite.Draw();
+            _nicknameText.Draw();
+            _heartIcon.Draw();
+            if(_floorText != null)
+            {
+                _floorText.Draw();
+                _floorSubtitleText.Draw();
+            }
+        }
+
+        public OutlinedText FloorText
+        {
+            set
+            {
+                _floorText = value;
+            }
+        }
+        public int Floor
+        {
+            set
+            {
+                _floorText.Content = value.ToString();
+            }
+        }
+    }
     private Vector2 _position;
     private Sprite _sprite;
     private byte _rotationValue = 0;
     private int _playerSpeed = 7;
     private Vector2 _previrousMousePosiston;
-    public Player(Vector2 position)
+    public PlayerInterface Interface{get;private set;}
+    public string Nickname{get;private set;}
+    public Player(Vector2 position, Vector2 interfacePosition, string nickname)
     {
         _position = position;
+        Nickname = nickname;
         _sprite = new(Content.TextureName.MAIN_PLAYER, new Vector2(MainGame.Resolution.X / 2f, MainGame.Resolution.Y / 2f), 2f, Color.White, 0.5f, 0.5f, 0f);
+        Interface = new(this, interfacePosition);
     }
 
     public void Draw()
     {
         _sprite.Draw();
     }
+
+    public void DrawInterface()
+    {
+       Interface.Draw();
+    }
+
     public void Update()
     {
         PerformRotation();
